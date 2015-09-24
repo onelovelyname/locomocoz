@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+</head>
+<body>
+  <h1> Hello Melanie! </h1>
+  <section id="app-region"></section>
+  <section id="googleMap" style="width:500px;height:380px;"></section>
+</body>
+
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
+
+  <script id="layoutTemplate" type="text/x-handlebars-template">
+    <h1>LayoutView</h1>
+    <section id="search-region"></section>
+    <section id="map-region"></section>
+    <section id="list-region"></section>
+  </script>
+
+  <script id="searchTemplate" type="text/x-handlebars-template">
+    <h1>SearchView</h1>
+    <input type="text" id="suggestedPlace" placeholder="Where do you want to go?" />
+    <input type="text" id="currentPlace" placeholder="Where are you?" />
+    <button action="submit">Submit</button>
+  </script>
+  
+  <script id="mapTemplate" type="text/x-handlebars-template">
+    <h1>MapView</h1>
+  </script>
+  
+  <script id="listItemTemplate" type="text/x-handlebars-template">
+    <h1>ListItemView</h1>  
+  </script>
+  
+  <script id="listTemplate" type="text/x-handlebars-template">
+    <h1>ListView</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Saved by</th>
+          <th>Votes</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </script>
+
+  <script src="vendor.js"></script>
+  
+  <script src="app.js"></script>  
+  <script src="router/Controller.js"></script>  
+  <script src="router/Router.js"></script>  
+  <script src="models/PlaceModel.js"></script>  
+  <script src="collections/PlacesCollection.js"></script>  
+  <script src="views/ListView.js"></script>  
+  <script src="views/MapView.js"></script>  
+  <script src="views/SearchView.js"></script>  
+  <script src="views/LayoutView.js"></script>  
+  <script src="main.js"></script>
+
+</html>

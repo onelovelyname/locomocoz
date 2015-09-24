@@ -16,7 +16,7 @@ app.SearchView = Marionette.ItemView.extend({
     var longitude = location[0].geometry.location["L"];
     var currentLocation = new google.maps.LatLng(latitude, longitude);
 
-    var map = new google.maps.Map(document.getElementById('googleMap'), {
+    var map = new google.maps.Map(document.getElementById('map-region'), {
       center: currentLocation,
       zoom: 12
     });

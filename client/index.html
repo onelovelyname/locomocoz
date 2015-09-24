@@ -7,7 +7,6 @@
 <body>
   <h1> Hello Melanie! </h1>
   <section id="app-region"></section>
-  <section id="googleMap" style="width:500px;height:380px;"></section>
 </body>
 
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
@@ -15,7 +14,7 @@
   <script id="layoutTemplate" type="text/x-handlebars-template">
     <h1>LayoutView</h1>
     <section id="search-region"></section>
-    <section id="map-region"></section>
+    <section id="map-region" style="width:500px;height:380px;"></section>
     <section id="list-region"></section>
   </script>
 
@@ -24,10 +23,6 @@
     <input type="text" id="suggestedPlace" placeholder="Where do you want to go?" />
     <input type="text" id="currentPlace" placeholder="Where are you?" />
     <button action="submit">Submit</button>
-  </script>
-  
-  <script id="mapTemplate" type="text/x-handlebars-template">
-    <h1>MapView</h1>
   </script>
   
   <script id="listItemTemplate" type="text/x-handlebars-template">
@@ -56,7 +51,6 @@
   <script src="models/PlaceModel.js"></script>  
   <script src="collections/PlacesCollection.js"></script>  
   <script src="views/ListView.js"></script>  
-  <script src="views/MapView.js"></script>  
   <script src="views/SearchView.js"></script>  
   <script src="views/LayoutView.js"></script>  
   <script src="main.js"></script>

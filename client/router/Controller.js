@@ -11,9 +11,15 @@ app.Controller = Marionette.Object.extend({
 
   home: function() {
 
+    app.map = new google.maps.Map(document.getElementById('map-region'), {
+      center: new google.maps.LatLng(0,0),
+      zoom: 1
+    });
+
+    var ListViewInstance = new app.ListView({collection: app.places});
+
     app.LayoutViewInstance.getRegion('search').show(new app.SearchView());
-    app.LayoutViewInstance.getRegion('map').show(new app.MapView());
-    app.LayoutViewInstance.getRegion('list').show(new app.ListView());
+    app.LayoutViewInstance.getRegion('list').show(ListViewInstance);
 
   },
 

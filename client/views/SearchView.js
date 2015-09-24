@@ -10,7 +10,19 @@ app.SearchView = Marionette.ItemView.extend({
     "submit": "handleSubmit"
   },
 
-  findPlaces: function(location, suggestedPlace) {
+  createMarker: function(place, map) {
+    var placeLocation = place.geometry.location;
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
+    });
+
+    google.maps.event.addListener(marker, 'click', function(){
+      console.log("place.name on click: ", place.name);
+    });
+  },
+
+  findPlaces: function(location, suggestedPlace, context) {
 
     var latitude = location[0].geometry.location["H"];
     var longitude = location[0].geometry.location["L"];
@@ -31,7 +43,11 @@ app.SearchView = Marionette.ItemView.extend({
     };
 
     service.nearbySearch(SearchRequest, function(results, status) {
-      console.log("results in findPlaces: ", results);
+      if(status === google.maps.places.PlacesServiceStatus.OK) {
+        for (var i = 0; i < results.length; i++) {
+          context.createMarker(results[i], map);
+        }
+      }
     });
 
   },
@@ -54,7 +70,7 @@ app.SearchView = Marionette.ItemView.extend({
 
     geocoder.geocode(GeocoderRequest, function(results, status) {
       if(status === google.maps.GeocoderStatus.OK) {
-        context.findPlaces(results, suggestedPlace);
+        context.findPlaces(results, suggestedPlace, context);
       } else {
         console.log("Geocode did not work, given the following status: ", status);
       }

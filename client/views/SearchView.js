@@ -91,13 +91,12 @@ app.SearchView = Marionette.ItemView.extend({
         geometry: place.geometry,
         savedBy: app.username,
         votes: 0,
-        room: 1,
-        firebaseId: "hello"
+        room: 1
       };
       
       context.savePlaceInFirebase(PlaceModel).then(function(model){
-        console.log("in callback: ", model);
-        app.places.add(model);
+       
+        app.places.get(model.id).set('firebaseId', model.firebaseId);
       
       });
 
@@ -110,11 +109,14 @@ app.SearchView = Marionette.ItemView.extend({
 
       var newPlaceRef = app.placesTable.push(PlaceModel);
 
-      var modelKey = newPlaceRef.key();
+      var modelInfo = {
 
-      PlaceModel['firebaseId'] = modelKey;
+        id: PlaceModel.id,
+        firebaseId: newPlaceRef.key()
 
-      resolve(PlaceModel);
+      };
+
+      resolve(modelInfo);
 
     });
 

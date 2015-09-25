@@ -6,6 +6,8 @@ app.SearchView = Marionette.ItemView.extend({
 
   tagName: "form",
 
+  className: "form-inline",
+
   events: {
     "submit": "handleSubmit"
   },

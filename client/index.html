@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-  <link rel="icon" type="image/png" href="styles/bike_favicon.png">
+  <link rel="icon" type="image/png" href="styles/egg_favicon.png">
 
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
@@ -20,6 +20,10 @@
 
   <script id="landingPageTemplate" type="text/x-handlebars-template">
     <a href="/#/map">Create new poll</a>
+    <div class="form-group">
+      <label for="username">What is your name?</label>
+      <input type="text" class="form-control" id="username" placeholder="Melanie"/>
+    </div>
 
   </script>
 
@@ -36,11 +40,16 @@
   </script>
 
   <script id="searchTemplate" type="text/x-handlebars-template">
-    <h1>SearchView</h1>
-    <input type="text" id="username" placeholder="Hello, what's your name?"/>
-    <input type="text" id="suggestedPlace" placeholder="Where do you want to go?" />
-    <input type="text" id="currentPlace" placeholder="Where are you?" />
-    <button action="submit">Submit</button>
+    <h1>Where to?</h1>
+    <div class="form-group">
+      <label for="suggestedPlace">Where to?</label>
+      <input type="text" class="form-control" id="suggestedPlace" placeholder="Party, Park, Boba" />  
+    </div>
+    <div class="form-group">
+      <label for="currentPlace">Where are you?</label>
+      <input type="text" class="form-control" id="currentPlace" placeholder="San Francisco" />  
+    </div>    
+    <button type="submit "action="submit" class="btn">Submit</button>
   </script>
   
   <script id="listItemTemplate" type="text/x-handlebars-template">
@@ -48,12 +57,11 @@
   </script>
   
   <script id="listTemplate" type="text/x-handlebars-template">
-    <h1>ListView</h1>
-    <table>
+    <table class="table">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>Saved by</th>
+          <th>Place</th>
+          <th>Suggested by</th>
           <th>Votes</th>
           <th>Vote</th>
         </tr>

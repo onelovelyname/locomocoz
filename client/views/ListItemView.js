@@ -26,15 +26,11 @@ app.ListItemView = Marionette.ItemView.extend({
 
       this.model.set("votes", ++currentVotes);
 
-      // app.placesTable.orderByChild("id").equalTo(modelId).on("value", function(snapshot){
-      //   var modelKey = Object.keys(snapshot.val())[0];
-      //   var modelRef = app.placesTable.child(modelKey);
+      var modelRef = app.placesTable.child(this.model.get('firebaseId'));
 
-      //   // modelRef.update({
-      //   //   votes: 
-      //   // })
-
-      // });
+      modelRef.update({
+        votes: currentVotes
+      });
 
     }
 

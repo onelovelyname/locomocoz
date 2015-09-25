@@ -10,16 +10,35 @@ app.SearchView = Marionette.ItemView.extend({
     "submit": "handleSubmit"
   },
 
-  createMarker: function(place, map) {
-    var placeLocation = place.geometry.location;
-    var marker = new google.maps.Marker({
-      map: map,
-      position: place.geometry.location
+  handleSubmit: function(event) {
+
+    event.preventDefault();
+
+    var suggestedPlace = $('#suggestedPlace').val();
+    var currentPlace = $('#currentPlace').val();
+  
+    this.sendGeocoderRequest(suggestedPlace, currentPlace);
+
+  },
+
+  sendGeocoderRequest: function(suggestedPlace, currentPlace) {
+
+    var geocoder = new google.maps.Geocoder();
+    var context = this;
+
+    var GeocoderRequest = {
+      address: currentPlace,
+      region: 'US'
+    };
+
+    geocoder.geocode(GeocoderRequest, function(results, status) {
+      if(status === google.maps.GeocoderStatus.OK) {
+        context.findPlaces(results, suggestedPlace, context);
+      } else {
+        console.log("Geocode did not work, given the following status: ", status);
+      }
     });
 
-    google.maps.event.addListener(marker, 'click', function(){
-      console.log("place.name on click: ", place.name);
-    });
   },
 
   findPlaces: function(location, suggestedPlace, context) {
@@ -52,34 +71,31 @@ app.SearchView = Marionette.ItemView.extend({
 
   },
 
-  handleSubmit: function(event) {
-
-    event.preventDefault();
-
+  createMarker: function(place, map) {
     var context = this;
-    
-    var geocoder = new google.maps.Geocoder();
-    var suggestedPlace = $('#suggestedPlace').val();
-    var currentPlace = $('#currentPlace').val();
-  
-    // Geocode request for use in Google Places API
-    var GeocoderRequest = {
-      address: currentPlace,
-      region: 'US'
-    };
-
-    geocoder.geocode(GeocoderRequest, function(results, status) {
-      if(status === google.maps.GeocoderStatus.OK) {
-        context.findPlaces(results, suggestedPlace, context);
-      } else {
-        console.log("Geocode did not work, given the following status: ", status);
-      }
+    var placeLocation = place.geometry.location;
+    var marker = new google.maps.Marker({
+      map: map,
+      position: place.geometry.location
     });
 
-    // Make request to Google Places using results provided
+    google.maps.event.addListener(marker, 'click', function() {
+      
+      var savedBy = $("#username").val();
+      
+      var PlaceModel = {
+        placeId: place.place_id,
+        name: place.name,
+        rating: place.rating,
+        price: place.price_level,
+        geometry: place.geometry,
+        savedBy: savedBy || "Melanie",
+        votes: 0
+      };
 
+      app.places.add(PlaceModel);
 
-
+    });
   }
 
 });

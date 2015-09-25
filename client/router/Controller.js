@@ -17,8 +17,8 @@ app.Controller = Marionette.Object.extend({
     });
 
     var ListViewInstance = new app.ListView({collection: app.places});
-
-    app.LayoutViewInstance.getRegion('search').show(new app.SearchView());
+    var SearchViewInstance = new app.SearchView();
+    app.LayoutViewInstance.getRegion('search').show(SearchViewInstance);
     app.LayoutViewInstance.getRegion('list').show(ListViewInstance);
 
   },

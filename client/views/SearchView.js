@@ -93,33 +93,10 @@ app.SearchView = Marionette.ItemView.extend({
         votes: 0,
         room: 1
       };
-      
-      context.savePlaceInFirebase(PlaceModel).then(function(model){
-       
-        app.places.get(model.id).set('firebaseId', model.firebaseId);
-      
-      });
+
+      app.placesTable.push(PlaceModel);
 
     });
-  },
-
-  savePlaceInFirebase: function(PlaceModel) {
-
-    return new Promise(function(resolve, reject){
-
-      var newPlaceRef = app.placesTable.push(PlaceModel);
-
-      var modelInfo = {
-
-        id: PlaceModel.id,
-        firebaseId: newPlaceRef.key()
-
-      };
-
-      resolve(modelInfo);
-
-    });
-
   }
 
 });

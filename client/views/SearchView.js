@@ -47,12 +47,12 @@ app.SearchView = Marionette.ItemView.extend({
     var longitude = location[0].geometry.location["L"];
     var currentLocation = new google.maps.LatLng(latitude, longitude);
 
-    var map = new google.maps.Map(document.getElementById('map-region'), {
+    app.map = new google.maps.Map(document.getElementById('map-region'), {
       center: currentLocation,
       zoom: 12
     });
 
-    var service = new google.maps.places.PlacesService(map);
+    var service = new google.maps.places.PlacesService(app.map);
 
     var SearchRequest = {
       location: currentLocation,
@@ -64,18 +64,18 @@ app.SearchView = Marionette.ItemView.extend({
     service.nearbySearch(SearchRequest, function(results, status) {
       if(status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
-          context.createMarker(results[i], map);
+          context.createMarker(results[i]);
         }
       }
     });
 
   },
 
-  createMarker: function(place, map) {
+  createMarker: function(place) {
     var context = this;
     var placeLocation = place.geometry.location;
     var marker = new google.maps.Marker({
-      map: map,
+      map: app.map,
       position: place.geometry.location
     });
 
@@ -90,10 +90,13 @@ app.SearchView = Marionette.ItemView.extend({
         price: place.price_level,
         geometry: place.geometry,
         savedBy: savedBy || "Melanie",
-        votes: 0
+        votes: 0,
+        room: 1
       };
 
       app.places.add(PlaceModel);
+
+      app.placesTable.push(PlaceModel);
 
     });
   }

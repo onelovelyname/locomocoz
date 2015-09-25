@@ -8,7 +8,8 @@ module.exports = function(grunt) {
           'bower_components/jquery/dist/jquery.min.js',
           'bower_components/handlebars/handlebars.min.js',
           'bower_components/backbone/backbone-min.js',
-          'bower_components/backbone.marionette/lib/backbone.marionette.min.js'
+          'bower_components/backbone.marionette/lib/backbone.marionette.min.js',
+          'bower_components/bluebird/js/browser/bluebird.min.js'
         ],
         dest: 'client/vendor.js'
       }

@@ -21,9 +21,21 @@ app.ListItemView = Marionette.ItemView.extend({
   events: {
 
     "click button": function() {
-      console.log("button click heard!");
       var currentVotes = this.model.get("votes");
+      var modelId = this.model.get('id');
+
       this.model.set("votes", ++currentVotes);
+
+      // app.placesTable.orderByChild("id").equalTo(modelId).on("value", function(snapshot){
+      //   var modelKey = Object.keys(snapshot.val())[0];
+      //   var modelRef = app.placesTable.child(modelKey);
+
+      //   // modelRef.update({
+      //   //   votes: 
+      //   // })
+
+      // });
+
     }
 
   },

@@ -91,14 +91,33 @@ app.SearchView = Marionette.ItemView.extend({
         geometry: place.geometry,
         savedBy: app.username,
         votes: 0,
-        room: 1
+        room: 1,
+        firebaseId: "hello"
       };
-
-      app.places.add(PlaceModel);
-
-      app.placesTable.push(PlaceModel);
+      
+      context.savePlaceInFirebase(PlaceModel).then(function(model){
+        console.log("in callback: ", model);
+        app.places.add(model);
+      
+      });
 
     });
+  },
+
+  savePlaceInFirebase: function(PlaceModel) {
+
+    return new Promise(function(resolve, reject){
+
+      var newPlaceRef = app.placesTable.push(PlaceModel);
+
+      var modelKey = newPlaceRef.key();
+
+      PlaceModel['firebaseId'] = modelKey;
+
+      resolve(PlaceModel);
+
+    });
+
   }
 
 });

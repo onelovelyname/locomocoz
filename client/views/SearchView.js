@@ -81,15 +81,15 @@ app.SearchView = Marionette.ItemView.extend({
 
     google.maps.event.addListener(marker, 'click', function() {
       
-      var savedBy = $("#username").val();
-      
+    app.username = $("#username").val();
+
       var PlaceModel = {
-        placeId: place.place_id,
+        id: place.place_id,
         name: place.name,
-        rating: place.rating,
-        price: place.price_level,
+        rating: place.rating || null,
+        price: place.price_level || null,
         geometry: place.geometry,
-        savedBy: savedBy || "Melanie",
+        savedBy: app.username,
         votes: 0,
         room: 1
       };

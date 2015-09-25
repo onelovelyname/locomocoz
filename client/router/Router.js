@@ -8,7 +8,7 @@ app.Router = Marionette.AppRouter.extend({
 
   appRoutes: {
     '': 'home',
-    'map/:id': 'map'
+    'map': 'map'
   }
 
 });

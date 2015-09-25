@@ -3,25 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <title>Loco Moco</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
   <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 </head>
 <body>
-  <input type="text" id="username" placeholder="Hello, what's your name?"/>
   <section id="app-region"></section>
 </body>
 
 
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
+  <script id="landingPageTemplate" type="text/x-handlebars-template">
+    <a href="/#/map">Create new poll</a>
+
+  </script>
+
   <script id="layoutTemplate" type="text/x-handlebars-template">
-    <h1>LayoutView</h1>
     <section id="search-region"></section>
-    <section id="map-region" style="width:500px;height:380px;"></section>
-    <section id="list-region"></section>
+    <section>
+      <section id="map-region"></section>
+      <section id="list-region"></section>
+    </section>
   </script>
 
   <script id="searchTemplate" type="text/x-handlebars-template">
     <h1>SearchView</h1>
+    <input type="text" id="username" placeholder="Hello, what's your name?"/>
     <input type="text" id="suggestedPlace" placeholder="Where do you want to go?" />
     <input type="text" id="currentPlace" placeholder="Where are you?" />
     <button action="submit">Submit</button>
@@ -39,6 +47,7 @@
           <th>Name</th>
           <th>Saved by</th>
           <th>Votes</th>
+          <th>Vote</th>
         </tr>
       </thead>
       <tbody></tbody>
@@ -54,6 +63,7 @@
   <script src="router/Router.js"></script>  
   <script src="models/PlaceModel.js"></script>  
   <script src="collections/PlacesCollection.js"></script>  
+  <script src="views/LandingPageView.js"></script>  
   <script src="views/ListItemView.js"></script>  
   <script src="views/EmptyListView.js"></script>  
   <script src="views/ListView.js"></script>  

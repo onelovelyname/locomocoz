@@ -19,13 +19,17 @@ app.on("before:start", function() {
 
   });
 
-  // this.placesTable.on("child_changed", function(snapshot) {
+  this.placesTable.on("child_changed", function(snapshot) {
     
-  //   var changedPlace = snapshot.val();
+    var changedPlace = snapshot.val();
+    var modelId = changedPlace.id;
 
-  //   console.log("changedPlace: ", changedPlace);
+    var modelToUpdate = app.places.get(modelId);
 
-  // });
+    modelToUpdate.set('votes', changedPlace.votes);
+    console.log("updated model on child_changed!");
+
+  });
 
 });
 

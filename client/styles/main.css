@@ -2,21 +2,14 @@ html {
   height: 100%;
 }
 
-body {
-  font-family: 'Lato', sans-serif;
-  font-weight: 300;
-  height: 100%;
+section#content-region {
+  
 }
 
-#search-region {
-
+section#map-region {
+  height: 500px;
 }
 
-#map-region {
-  width: 600px;
-  height: 450px;
-}
-
-#list-region {
+section#list-region {
   
 }

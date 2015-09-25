@@ -27,7 +27,6 @@ app.on("before:start", function() {
     var modelToUpdate = app.places.get(modelId);
 
     modelToUpdate.set('votes', changedPlace.votes);
-    console.log("updated model on child_changed!");
 
   });
 

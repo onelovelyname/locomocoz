@@ -93,7 +93,7 @@ app.SearchView = Marionette.ItemView.extend({
         geometry: place.geometry,
         savedBy: sessionStorage.getItem('username'),
         votes: 0,
-        room: 1
+        room: sessionStorage.getItem('room-num')
       };
 
       app.placesTable.push(PlaceModel);

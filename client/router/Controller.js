@@ -19,6 +19,36 @@ app.Controller = Marionette.Object.extend({
 
   map: function() {
 
+    var roomNumber = sessionStorage.getItem('room-num');
+
+    console.log("roomNumber inside of map: ", roomNumber);
+    
+    // fetch places from a data store, and listen for updates
+    app.placesTable.orderByChild("room").equalTo(roomNumber).on("value", function(snapshot) {
+      
+      var placesInDB = snapshot.val();
+
+      for (var key in placesInDB) {
+
+        placesInDB[key]['firebaseId'] = key;
+
+        app.places.add(placesInDB[key]);
+
+      }
+
+    });
+
+    app.placesTable.on("child_changed", function(snapshot) {
+      
+      var changedPlace = snapshot.val();
+      var modelId = changedPlace.id;
+
+      var modelToUpdate = app.places.get(modelId);
+
+      modelToUpdate.set('votes', changedPlace.votes);
+
+    });
+
     app.map = new google.maps.Map(document.getElementById('map-region'), {
       center: new google.maps.LatLng(0,0),
       zoom: 1

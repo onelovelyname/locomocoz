@@ -32,8 +32,6 @@ app.LandingPageView = Marionette.ItemView.extend({
 
   createNewRoom: function(event) {
 
-    console.log("inside of createNewRoom");
-
     var user = sessionStorage.getItem('username');
     var newRoomRef = app.roomsTable.push({ creator: user });
     var roomId = newRoomRef.key();

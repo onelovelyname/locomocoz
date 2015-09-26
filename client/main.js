@@ -3,34 +3,6 @@ var app = app || {};
 app.on("before:start", function() {
 
   this.places = new app.PlacesCollection();
-  
-  var roomNumber = sessionStorage.getItem('room-num');
-
-  // fetch places from a data store, and listen for updates
-  this.placesTable.orderByChild("room").equalTo(1).on("value", function(snapshot) {
-    
-    var placesInDB = snapshot.val();
-
-    for (var key in placesInDB) {
-
-      placesInDB[key]['firebaseId'] = key;
-
-      app.places.add(placesInDB[key]);
-
-    }
-
-  });
-
-  this.placesTable.on("child_changed", function(snapshot) {
-    
-    var changedPlace = snapshot.val();
-    var modelId = changedPlace.id;
-
-    var modelToUpdate = app.places.get(modelId);
-
-    modelToUpdate.set('votes', changedPlace.votes);
-
-  });
 
 });
 

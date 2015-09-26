@@ -45,7 +45,9 @@ app.Controller = Marionette.Object.extend({
 
       var modelToUpdate = app.places.get(modelId);
 
-      modelToUpdate.set('votes', changedPlace.votes);
+      if(modelToUpdate) {
+        modelToUpdate.set('votes', changedPlace.votes);
+      }
 
     });
 

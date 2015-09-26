@@ -6,7 +6,8 @@ app.LandingPageView = Marionette.ItemView.extend({
 
   events: {
     "change input#username": "getUsername",
-    "change input#room-num": "getRoomNumber"
+    "change input#room-num": "getRoomNumber",
+    "click a#create-new-room": "createNewRoom"
   },
 
   getUsername: function(event) {
@@ -26,6 +27,19 @@ app.LandingPageView = Marionette.ItemView.extend({
     var roomNumber = $('#room-num').val();
 
     sessionStorage.setItem('room-num', roomNumber);
+  
+  },
+
+  createNewRoom: function(event) {
+
+    console.log("inside of createNewRoom");
+
+    var user = sessionStorage.getItem('username');
+    var newRoomRef = app.roomsTable.push({ creator: user });
+    var roomId = newRoomRef.key();
+
+    sessionStorage.setItem('room-num', roomId);
+
   }
 
 });

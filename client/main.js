@@ -4,6 +4,8 @@ app.on("before:start", function() {
 
   this.places = new app.PlacesCollection();
   
+  var roomNumber = sessionStorage.getItem('room-num');
+
   // fetch places from a data store, and listen for updates
   this.placesTable.orderByChild("room").equalTo(1).on("value", function(snapshot) {
     

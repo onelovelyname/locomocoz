@@ -19,12 +19,20 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <script id="landingPageTemplate" type="text/x-handlebars-template">
-    <a href="/#/map">Create new poll</a>
     <div class="form-group">
-      <label for="username">What is your name?</label>
+      <label for="username">Welcome, what is your name?</label>
       <input type="text" class="form-control" id="username" placeholder="Melanie"/>
     </div>
-
+    <h3>Organizing new room?</h3>
+    <a id="create-new-room" href="/#/map">Create new room</a>
+    <h3>Friend create a room already?</h3>
+    <form>
+      <div class="form-group">
+        <label for="room-num">Enter room number</label>
+        <input type="text" class="form-control" id="room-num" placeholder="1"/>
+      </div>
+      <a id="enter-existing-room" href="/#/map">Enter existing room</a>
+    <form>
   </script>
 
   <script id="layoutTemplate" type="text/x-handlebars-template">

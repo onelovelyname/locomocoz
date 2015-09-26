@@ -5,15 +5,27 @@ app.LandingPageView = Marionette.ItemView.extend({
   template: Handlebars.compile($('#landingPageTemplate').html()),
 
   events: {
-    "change input#username": "getUsername"
+    "change input#username": "getUsername",
+    "change input#room-num": "getRoomNumber"
   },
 
   getUsername: function(event) {
 
     event.preventDefault();
 
-    app.username = $('#username').val();
+    var username = $('#username').val();
+    
+    sessionStorage.setItem('username', username);
 
+  },
+
+  getRoomNumber: function(event) {
+
+    event.preventDefault();
+
+    var roomNumber = $('#room-num').val();
+
+    sessionStorage.setItem('room-num', roomNumber);
   }
 
 });

@@ -91,7 +91,7 @@ app.SearchView = Marionette.ItemView.extend({
         rating: place.rating || null,
         price: place.price_level || null,
         geometry: place.geometry,
-        savedBy: app.username,
+        savedBy: sessionStorage.getItem('username'),
         votes: 0,
         room: 1
       };

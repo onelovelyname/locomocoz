@@ -13,6 +13,7 @@ app.Controller = Marionette.Object.extend({
     console.log("home");
     var LandingPageViewInstance = new app.LandingPageView();
     app.LayoutViewInstance.getRegion('search').show(LandingPageViewInstance);
+    $('section#search-region').addClass("home-ui");
 
   },
 

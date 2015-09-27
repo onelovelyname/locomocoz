@@ -63,43 +63,31 @@ app.utility = (function() {
       position: place.geometry.location
     });
 
-    google.maps.event.addListener(marker, 'click', function() {
-      
-      // new feature: display place info
-      var service = new google.maps.places.PlacesService(app.map);
+    google.maps.event.addListener(marker, 'click', this.getPlaceDetails.bind(place));
+  };
 
-      service.getDetails({
-        placeId: place.place_id
-      }, function(place, status) {
-        if (status === google.maps.places.PlacesServiceStatus.OK) {
-          var placeModel = new app.PlaceModel(place);
-          var InfoViewInstance = new app.InfoView({model: placeModel});
-          app.LayoutViewInstance.getRegion('info').show(InfoViewInstance);
-        }
-      });
+  var getPlaceDetails = function() {
 
-      // save place as PlaceModel to Firebase db
-      // var PlaceModel = {
-      //   id: place.place_id,
-      //   name: place.name,
-      //   rating: place.rating || null,
-      //   price: place.price_level || null,
-      //   geometry: place.geometry,
-      //   savedBy: sessionStorage.getItem('username'),
-      //   votes: 0,
-      //   room: sessionStorage.getItem('room-num')
-      // };
+    var service = new google.maps.places.PlacesService(app.map);
 
-      // app.placesTable.push(PlaceModel);
-
+    service.getDetails({
+      placeId: this.place_id || this.get("id")
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        var placeModel = new app.PlaceModel(place);
+        var InfoViewInstance = new app.InfoView({model: placeModel});
+        app.LayoutViewInstance.getRegion('info').show(InfoViewInstance);
+      }
     });
+
   };
 
   return {
 
     sendGeocoderRequest: sendGeocoderRequest,
     findPlaces: findPlaces,
-    createMarker: createMarker
+    createMarker: createMarker,
+    getPlaceDetails: getPlaceDetails
 
   };
 

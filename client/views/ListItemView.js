@@ -2,7 +2,7 @@ var app = app || {};
 
 app.ListItemView = Marionette.ItemView.extend({
 
-  template: _.template("<td><%= name %></td><td><%= savedBy %></td><td><%= votes %></td><td><button>Vote</button></td>"),
+  template: _.template("<td class='itemName'><%= name %></td><td><%= savedBy %></td><td><%= votes %></td><td><button>Vote</button></td>"),
 
   tagName: "tr",
 
@@ -31,6 +31,12 @@ app.ListItemView = Marionette.ItemView.extend({
       modelRef.update({
         votes: currentVotes
       });
+
+    },
+
+    "click.itemName": function() {
+
+      app.utility.getPlaceDetails.call(this.model);
 
     }
 

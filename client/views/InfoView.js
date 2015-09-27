@@ -2,7 +2,7 @@ var app = app || {};
 
 app.InfoView = Marionette.ItemView.extend({
 
-  template: _.template("<h3><%= name %><h3><p><%= vicinity %><p><p><%= rating %><p><button>Add to list</button>"),
+  template: _.template("<h3><%= name %></h3><p><%= vicinity %><p><p>Rating: <%= rating %><p><%= showButton() %>"),
 
   events: {
 
@@ -31,11 +31,22 @@ app.InfoView = Marionette.ItemView.extend({
 
   templateHelpers: function() {
 
+    var context = this;
+
     return {
 
       name: this.model.get("name"),
       vicinity: this.model.get("vicinity"),
-      rating: this.model.get("rating")
+      rating: this.model.get("rating"),
+
+      showButton: function() {
+
+        if (!app.places.get(context.model.get("place_id"))) {
+          return "<button class='btn'>Add to list</button>";
+        }
+
+        return;
+      }
 
     };
 

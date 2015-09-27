@@ -19,20 +19,26 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <script id="landingPageTemplate" type="text/x-handlebars-template">
+    <h1>Welcome to Loco Moco</h1>
+    <h2>Make sense of where to go with friends</h2>
     <div class="form-group">
-      <label for="username">Welcome, what is your name?</label>
-      <input type="text" class="form-control" id="username" placeholder="Melanie"/>
+      <label for="username" class="hidden">What is your name?</label>
+      <input type="text" class="form-control" id="username" placeholder="What's your name?"/>
     </div>
-    <h3>Organizing new room?</h3>
-    <a id="create-new-room" href="/#/map">Create new room</a>
-    <h3>Friend create a room already?</h3>
-    <form>
-      <div class="form-group">
-        <label for="room-num">Enter room number</label>
-        <input type="text" class="form-control" id="room-num" placeholder="1"/>
-      </div>
-      <a id="enter-existing-room" href="/#/map">Enter existing room</a>
-    <form>
+    <div class="col-md-6">
+      <h3>Organizing new room?</h3>
+      <a class="btn btn-primary" id="create-new-room" href="/#/map">Create new room</a>
+    </div>
+    <div class="col-md-6">
+      <h3>Friend create a room already?</h3>
+      <form>
+        <div class="form-group">
+          <label for="room-num" class="hidden">Enter room number</label>
+          <input type="text" class="form-control" id="room-num" placeholder="Enter room number"/>
+        </div>
+        <a class="btn btn-primary" id="enter-existing-room" href="/#/map">Enter existing room</a>
+      <form>
+    </div>
   </script>
 
   <script id="layoutTemplate" type="text/x-handlebars-template">

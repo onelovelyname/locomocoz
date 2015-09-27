@@ -15,12 +15,15 @@ section#list-region {
 }
 
 section#info-region {
-  border-style: solid;
-  border-width: 2px;
 }
 
 section.home-ui {
-  width: 50%;
+  width: 80%;
   text-align: center;
+  margin: 0 auto;
+}
+
+input#username.form-control, input#room-num.form-control {
+  width: 50%;
   margin: 0 auto;
 }

@@ -13,19 +13,12 @@ h1, h2, h3, h4 {
   font-weight: 400;
 }
 
-section#content-region {
-  
+section#search-region {
+  padding: 10px;  
 }
 
-section#map-region {
-  height: 500px;
-}
-
-section#list-region {
-  
-}
-
-section#info-region {
+img.icon {
+  height: 100px;
 }
 
 section.home-ui {
@@ -38,3 +31,17 @@ input#username.form-control, input#room-num.form-control {
   width: 50%;
   margin: 0 auto;
 }
+
+
+section#content-region {
+  
+}
+
+section#list-region {
+  
+}
+
+section#info-region {
+}
+
+

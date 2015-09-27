@@ -47,7 +47,7 @@ app.utility = (function() {
     service.nearbySearch(SearchRequest, function(results, status) {
       if(status === google.maps.places.PlacesServiceStatus.OK) {
         for (var i = 0; i < results.length; i++) {
-          context.createMarker(results[i], image);
+          context.createMarker(results[i]);
         }
       }
     });

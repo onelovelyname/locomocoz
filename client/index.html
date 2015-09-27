@@ -62,18 +62,20 @@
 
   <script id="searchTemplate" type="text/x-handlebars-template">
     <div class='row'>
-      <img class='col-md-1' src="styles/egg_icon.png">
-      <h1 class='col-md-11'>loco moco finding places to go?</h1>
+      <div class='col-md-12'>
+        <h2>Loco Moco over where to go?</h2>
+        <div class="form-group">
+          <label for="suggestedPlace">Suggest somewhere</label>
+          <input type="text" class="form-control" id="suggestedPlace" placeholder="Party, Park, Boba" />  
+        </div>
+        <div class="form-group">
+          <label for="currentPlace">Where are you now?</label>
+          <input type="text" class="form-control" id="currentPlace" placeholder="San Francisco" />  
+        </div>    
+        <button type="submit "action="submit" class="btn btn-primary">Submit</button>
+
+      </div>
     </div>
-    <div class="form-group">
-      <label for="suggestedPlace">Suggest somewhere</label>
-      <input type="text" class="form-control" id="suggestedPlace" placeholder="Party, Park, Boba" />  
-    </div>
-    <div class="form-group">
-      <label for="currentPlace">Where are you now?</label>
-      <input type="text" class="form-control" id="currentPlace" placeholder="San Francisco" />  
-    </div>    
-    <button type="submit "action="submit" class="btn btn-primary">Submit</button>
   </script>
   
   <script id="listItemTemplate" type="text/x-handlebars-template">

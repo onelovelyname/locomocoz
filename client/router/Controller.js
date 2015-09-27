@@ -10,7 +10,7 @@ app.Controller = Marionette.Object.extend({
   },
 
   home: function() {
-    console.log("home");
+
     var LandingPageViewInstance = new app.LandingPageView();
     app.LayoutViewInstance.getRegion('search').show(LandingPageViewInstance);
     $('section#search-region').addClass("home-ui");
@@ -18,13 +18,11 @@ app.Controller = Marionette.Object.extend({
   },
 
   map: function() {
-
-    var roomNumber = sessionStorage.getItem('room-num');
-
-    console.log("roomNumber inside of map: ", roomNumber);
     
     // fetch places from Firebase, listen for updates
     // create map markers and add to app.places
+    var roomNumber = sessionStorage.getItem('room-num');
+    console.log("roomNumber inside of map: ", roomNumber);
 
     app.placesTable.orderByChild("room").equalTo(roomNumber).on("value", function(snapshot) {
       
@@ -33,8 +31,6 @@ app.Controller = Marionette.Object.extend({
       for (var key in placesInDB) {
 
         placesInDB[key]['firebaseId'] = key;
-
-        //app.utility.createMarker(placesInDB[key]);
 
         app.places.add(placesInDB[key]);
 
@@ -55,9 +51,20 @@ app.Controller = Marionette.Object.extend({
 
     });
 
+    // size and style map to fit page
+
+    if ($('body').width() > 991) {
+      var mapHeight = ($('body').height() - 120).toString() + "px";
+      $('#map-region').css("height", mapHeight);
+    } else {
+      $('#map-region').css("height", "400px");
+    }
+
+    $('section#search-region').addClass("home-ui");
+
     app.map = new google.maps.Map(document.getElementById('map-region'), {
       center: new google.maps.LatLng(0,0),
-      zoom: 1
+      zoom: 2
     });
 
     var SearchViewInstance = new app.SearchView();

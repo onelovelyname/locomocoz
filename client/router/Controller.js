@@ -23,7 +23,9 @@ app.Controller = Marionette.Object.extend({
 
     console.log("roomNumber inside of map: ", roomNumber);
     
-    // fetch places from a data store, and listen for updates
+    // fetch places from Firebase, listen for updates
+    // create map markers and add to app.places
+
     app.placesTable.orderByChild("room").equalTo(roomNumber).on("value", function(snapshot) {
       
       var placesInDB = snapshot.val();
@@ -31,6 +33,8 @@ app.Controller = Marionette.Object.extend({
       for (var key in placesInDB) {
 
         placesInDB[key]['firebaseId'] = key;
+
+        //app.utility.createMarker(placesInDB[key]);
 
         app.places.add(placesInDB[key]);
 

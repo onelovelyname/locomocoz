@@ -2,7 +2,7 @@ var app = app || {};
 
 app.ListItemView = Marionette.ItemView.extend({
 
-  template: _.template("<td class='itemName'><%= name %></td><td><%= savedBy %></td><td><%= votes %></td><td><button>Vote</button></td>"),
+  template: _.template("<td class='itemName'><%= name %></td><td><%= savedBy %></td><td><%= votes %></td><td><button class='btn btn-default'>Vote</button></td>"),
 
   tagName: "tr",
 

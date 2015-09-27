@@ -2,7 +2,7 @@ var app = app || {};
 
 app.InfoView = Marionette.ItemView.extend({
 
-  template: _.template("<h3><%= name %></h3><p><%= vicinity %><p><p>Rating: <%= rating %><p><%= showButton() %>"),
+  template: _.template("<div class='row'><%= getPlacePhoto() %><div class='col-md-8'><h4><%= name %></h4><p><%= vicinity %><p><p>Rating: <%= rating %><p><%= showButton() %><div></div>"),
 
   events: {
 
@@ -39,8 +39,23 @@ app.InfoView = Marionette.ItemView.extend({
       vicinity: this.model.get("vicinity"),
       rating: this.model.get("rating"),
 
-      showButton: function() {
+      getPlacePhoto: function() {
 
+        if (context.model.get('photos').length > 0) {
+          var photoUrl = context.model.get('photos')[0].getUrl({
+            'maxWidth': 100,
+            'maxHeight': 100
+          });
+
+          return "<div class='col-md-4'><img src=" + photoUrl + "alt='place-photo'></div>";
+        }
+
+        return;
+
+      },
+
+      showButton: function() {
+        
         if (!app.places.get(context.model.get("place_id"))) {
           return "<button class='btn'>Add to list</button>";
         }

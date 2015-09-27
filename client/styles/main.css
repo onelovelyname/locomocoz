@@ -1,5 +1,16 @@
 html { 
   height: 100%;
+
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  height: 100%;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
 }
 
 section#content-region {

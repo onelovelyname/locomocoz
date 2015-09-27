@@ -55,6 +55,7 @@ app.utility = (function() {
   };
 
   var createMarker = function(place) {
+
     var context = this;
     var placeLocation = place.geometry.location;
 
@@ -71,7 +72,8 @@ app.utility = (function() {
     var service = new google.maps.places.PlacesService(app.map);
 
     service.getDetails({
-      placeId: this.place_id || this.get("id")
+      // google place, PlaceModel, place in Firebase
+      placeId: this.place_id || this.get("id") || this.id
     }, function(place, status) {
       if (status === google.maps.places.PlacesServiceStatus.OK) {
         var placeModel = new app.PlaceModel(place);

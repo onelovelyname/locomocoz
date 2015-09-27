@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Loco Moco</title>
-  <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles/main.css">
   <link href='https://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/png" href="styles/egg_favicon.png">
 
@@ -61,16 +61,19 @@
   </script>
 
   <script id="searchTemplate" type="text/x-handlebars-template">
-    <h1>Where to?</h1>
+    <div class='row'>
+      <img class='col-md-1' src="styles/egg_icon.png">
+      <h1 class='col-md-11'>loco moco finding places to go?</h1>
+    </div>
     <div class="form-group">
-      <label for="suggestedPlace">Where to?</label>
+      <label for="suggestedPlace">Suggest somewhere</label>
       <input type="text" class="form-control" id="suggestedPlace" placeholder="Party, Park, Boba" />  
     </div>
     <div class="form-group">
-      <label for="currentPlace">Where are you?</label>
+      <label for="currentPlace">Where are you now?</label>
       <input type="text" class="form-control" id="currentPlace" placeholder="San Francisco" />  
     </div>    
-    <button type="submit "action="submit" class="btn">Submit</button>
+    <button type="submit "action="submit" class="btn btn-primary">Submit</button>
   </script>
   
   <script id="listItemTemplate" type="text/x-handlebars-template">

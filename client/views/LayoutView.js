@@ -9,7 +9,8 @@ app.LayoutView = Marionette.LayoutView.extend({
   regions: {
     'search': '#search-region',
     'map': '#map-region',
-    'list': '#list-region'
+    'list': '#list-region',
+    'info': '#info-region'
   }
 
 });

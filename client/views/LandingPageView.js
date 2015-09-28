@@ -10,6 +10,12 @@ app.LandingPageView = Marionette.ItemView.extend({
     "click a#create-new-room": "createNewRoom"
   },
 
+  onBeforeShow: function() {
+
+    $('body').addClass("home-ui");
+
+  },
+
   getUsername: function(event) {
 
     event.preventDefault();

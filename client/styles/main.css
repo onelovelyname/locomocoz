@@ -1,6 +1,5 @@
 html { 
   height: 100%;
-
 }
 
 body {
@@ -21,6 +20,14 @@ img.icon {
   height: 100px;
 }
 
+body.home-ui {
+  background: url(fun.jpeg) no-repeat center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;  
+}
+
 section.home-ui {
   width: 80%;
   text-align: center;
@@ -32,16 +39,6 @@ input#username.form-control, input#room-num.form-control {
   margin: 0 auto;
 }
 
-
-section#content-region {
-  
+td.itemName {  
+  cursor: pointer; 
 }
-
-section#list-region {
-  
-}
-
-section#info-region {
-}
-
-

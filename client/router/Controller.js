@@ -18,7 +18,7 @@ app.Controller = Marionette.Object.extend({
   },
 
   map: function() {
-    
+
     // fetch places from Firebase, listen for updates
     // create map markers and add to app.places
     var roomNumber = sessionStorage.getItem('room-num');
@@ -52,6 +52,8 @@ app.Controller = Marionette.Object.extend({
     });
 
     // size and style map to fit page
+
+    $('body').removeClass("home-ui");
 
     if ($('body').width() > 991) {
       var mapHeight = ($('body').height() - 120).toString() + "px";

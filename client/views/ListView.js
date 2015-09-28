@@ -2,7 +2,10 @@ var app = app || {};
 
 app.ListView = Marionette.CompositeView.extend({
 
-  template: Handlebars.compile($('#listTemplate').html()),
+
+  template: _.template("<div><h4>Room Number:&nbsp;<%= getRoomNumber() %></h4></div><table class='table'>"+
+      "<thead><tr><th>Place</th><th>Suggested by</th><th>Votes</th><th>Vote</th></tr></thead>"+
+      "<tbody></tbody></table>"),
 
   collection: app.places,
 
@@ -10,6 +13,18 @@ app.ListView = Marionette.CompositeView.extend({
 
   childViewContainer: "tbody",
 
-  emptyView: app.EmptyListView
+  emptyView: app.EmptyListView,
+
+  templateHelpers: function() {
+
+    return {
+
+      getRoomNumber: function() {
+        return sessionStorage.getItem('room-num');
+      }
+
+    };
+
+  },
 
 });

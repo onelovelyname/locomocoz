@@ -44,7 +44,7 @@ app.InfoView = Marionette.ItemView.extend({
 
         if (context.model.get('photos')) {
           var photoUrl = context.model.get('photos')[0].getUrl({
-            'maxWidth': 100,
+            'maxWidth': 150,
             'maxHeight': 150
           });
 
